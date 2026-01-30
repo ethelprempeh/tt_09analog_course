@@ -11,39 +11,39 @@ N 600 -680 660 -680 {
 lab=r}
 N 960 -700 1040 -700 {
 lab=vdd}
-N 960 -680 1000 -680 {
-lab=q}
 N 960 -660 1000 -660 {
+lab=q}
+N 960 -680 1000 -680 {
 lab=qb}
 N 960 -640 1040 -640 {
 lab=GND}
-N 770 -540 770 -510 {
+N 680 -540 680 -510 {
 lab=vdd}
-N 850 -540 850 -510 {
+N 810 -540 810 -510 {
 lab=s}
-N 940 -540 940 -510 {
+N 1050 -540 1050 -510 {
 lab=r}
-N 940 -450 940 -420 {
+N 1050 -450 1050 -420 {
 lab=GND}
-N 850 -450 850 -420 {
+N 810 -450 810 -420 {
 lab=GND}
-N 770 -450 770 -420 {
+N 680 -450 680 -420 {
 lab=GND}
 C {sr_latch.sym} 810 -670 0 0 {name=x1}
 C {devices/ipin.sym} 600 -700 0 0 {name=p1 lab=s}
 C {devices/ipin.sym} 600 -680 0 0 {name=p2 lab=r}
 C {devices/iopin.sym} 1040 -700 0 0 {name=p3 lab=vdd}
-C {devices/opin.sym} 1000 -680 0 0 {name=p4 lab=q}
-C {devices/opin.sym} 1000 -660 0 0 {name=p10 lab=qb}
-C {devices/vsource.sym} 770 -480 0 0 {name=V1 value=1.8 savecurrent=false}
-C {devices/vsource.sym} 850 -480 0 0 {name=V2 value="PULSE(0 1.8 10n 1n 1n 40n 200n)" savecurrent=false}
-C {devices/lab_pin.sym} 770 -540 0 0 {name=p11 sig_type=std_logic lab=vdd}
-C {devices/lab_pin.sym} 850 -540 0 0 {name=p13 sig_type=std_logic lab=s}
-C {devices/lab_pin.sym} 940 -540 0 0 {name=p14 sig_type=std_logic lab=r}
-C {devices/vsource.sym} 940 -480 0 0 {name=V3 value="PULSE(0 1.8 10n 1n 1n 40n 200n)" savecurrent=false}
-C {devices/gnd.sym} 770 -420 0 0 {name=l1 lab=GND}
-C {devices/gnd.sym} 850 -420 0 0 {name=l2 lab=GND}
-C {devices/gnd.sym} 940 -420 0 0 {name=l3 lab=GND}
+C {devices/opin.sym} 1000 -660 0 0 {name=p4 lab=q}
+C {devices/opin.sym} 1000 -680 0 0 {name=p10 lab=qb}
+C {devices/vsource.sym} 680 -480 0 0 {name=V1 value=1.8 savecurrent=false}
+C {devices/vsource.sym} 810 -480 0 0 {name=V2 value=0 savecurrent=false}
+C {devices/lab_pin.sym} 680 -540 0 0 {name=p11 sig_type=std_logic lab=vdd}
+C {devices/lab_pin.sym} 810 -540 0 0 {name=p13 sig_type=std_logic lab=s}
+C {devices/lab_pin.sym} 1050 -540 0 0 {name=p14 sig_type=std_logic lab=r}
+C {devices/vsource.sym} 1050 -480 0 0 {name=V3 value=0 savecurrent=false}
+C {devices/gnd.sym} 680 -420 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} 810 -420 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} 1050 -420 0 0 {name=l3 lab=GND}
 C {devices/gnd.sym} 1040 -640 0 0 {name=l5 lab=GND}
 C {devices/code.sym} 450 -520 0 0 {name=TT_MODELS
 only_toplevel=true
@@ -63,16 +63,18 @@ tclcommand="
   \}
 "
 }
-C {devices/code.sym} 1150 -510 0 0 {name=SIMULATION
+C {devices/code.sym} 1310 -540 0 0 {name=SIMULATION
 only_toplevel=true
 value="
 * .options filetype=ascii
 
 .control
 
-tran 0.1n 500n
-plot v(s) v(r) title 'Inputs: S and R'
-plot v(q) v(qb) title 'Outputs: Q and QB'
+tran 0.1n 200n
+plot v(s)
+plot v(r) 
+plot v(q) 
+plot v(qb) 
 *write ring_osc.raw
 .endc
 .end

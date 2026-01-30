@@ -5,10 +5,10 @@
 *.iopin vdd
 *.opin q
 *.opin qb
-x1 vdd s q qb GND r sr_latch
+x1 vdd s qb q GND r sr_latch
 V1 vdd GND 1.8
-V2 s GND PULSE(0 1.8 10n 1n 1n 40n 200n)
-V3 r GND PULSE(0 1.8 10n 1n 1n 40n 200n)
+V2 s GND 0
+V3 r GND 0
 **** begin user architecture code
 
 ** opencircuitdesign pdks install
@@ -20,9 +20,11 @@ V3 r GND PULSE(0 1.8 10n 1n 1n 40n 200n)
 
 .control
 
-tran 0.1n 500n
-plot v(s) v(r) title 'Inputs: S and R'
-plot v(q) v(qb) title 'Outputs: Q and QB'
+tran 0.1n 200n
+plot v(s)
+plot v(r)
+plot v(q)
+plot v(qb)
 *write ring_osc.raw
 .endc
 .end
